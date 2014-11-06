@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AFAF_Admin.Models.Recipient>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div id="content">
+    <h1 class="title">Recipients Manager</h1>
+    <div class="line" style="padding: 0;"></div>
+    <div class="post">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "button maroon" })
+        <table class="tablesorter" id="recipientTable">
+            <thead>
+                <tr>
+                    <th>Status
+                    </th>
+                    <th>First Name
+                    </th>
+                    <th>Last Name
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                     <td>
+                        @if(item.active == true){
+                        <span>Active</span>
+                        }
+                        else{
+                        <span>Inactive</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.firstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lastName)
+                    </td>
+                    <td style="text-align: center;">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.userName }, new { @class = "button maroon", @style = "margin: 0;" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.userName}, new { @class = "deleteLink button maroon", @style = "margin: 0;" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

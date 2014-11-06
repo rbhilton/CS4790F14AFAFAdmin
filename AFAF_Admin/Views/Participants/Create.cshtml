@@ -1,0 +1,73 @@
+﻿@model AFAF_Admin.Models.Participant
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div id="content">
+    <h1 class="title">Create Donor</h1>
+    <div class="line" style="padding: 0;"></div>
+    <div class="clear"></div>
+    <div class="post">
+
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "forms donorCreateForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="box col2">
+                <div class="form-container">
+                    <fieldset>
+                        <ol>
+                            <li class="form-row text-input-row">
+                                <label>First Name</label>
+                                @Html.TextBoxFor(model => model.firstName, new { @placeholder = "Enter donor first name..." })
+                                @Html.ValidationMessageFor(model => model.firstName)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Last Name</label>
+                                @Html.TextBoxFor(model => model.lastName, new { @placeholder = "Enter donor last name..." })
+                                @Html.ValidationMessageFor(model => model.lastName)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Suffix</label>
+                                @Html.TextBoxFor(model => model.suffix, new { @placeholder = "Enter donor suffix..." })
+                                @Html.ValidationMessageFor(model => model.suffix)
+                            </li>
+                            <li class="form-row text-input-row">
+                            <label>Email</label>
+                            @Html.TextBoxFor(model => model.email, new { @placeholder = "Enter donor email..." })
+                            @Html.ValidationMessageFor(model => model.email)
+                        </li>
+                            <p>
+                                <input type="submit" value="Create" class="button maroon eventSubmitButton" />
+                                @Html.ActionLink("Back", "Index", null, new { @class = "button maroon" })
+                            </p>
+                        </ol>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="box col2 right">
+                <fieldset>
+                    <ol>
+                        <li class="form-row text-input-row">
+                            <label>Donor Phone Number<br /> (Format: '1234567890' 10 digits)</label>
+                            @Html.TextBoxFor(model => model.phone, new { @class = "participantPhone", @placeholder = "Enter donor phone number..." })
+                            @Html.ValidationMessageFor(model => model.phone)
+                        </li>
+                        <li class="form-row text-input-row">
+                            <label>Emergency Contact Name</label>
+                            @Html.TextBoxFor(model => model.emContactName, new { @placeholder = "Enter emergency contact name..." })
+                            @Html.ValidationMessageFor(model => model.emContactName)
+                        </li>
+                        <li class="form-row text-input-row">
+                            <label>Emergency Contact Phone Number<br /> (Format: '1234567890' 10 digits)</label>
+                            @Html.TextBoxFor(model => model.emContactPhone, new { @placeholder = "Enter emergency contact phone number..." })
+                            @Html.ValidationMessageFor(model => model.emContactPhone)
+                        </li>
+                    </ol>
+                </fieldset>
+            </div>
+        }
+
+    </div>
+</div>

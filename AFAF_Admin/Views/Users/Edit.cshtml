@@ -1,0 +1,131 @@
+﻿@model AFAF_Admin.Models.Users
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div id="content">
+    <h1 class="title">Edit User</h1>
+    <div class="line" style="padding: 0;"></div>
+    <div class="clear"></div>
+    <div class="post">
+
+
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "forms adminUsersForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="box col2">
+                <div class="form-container">
+                    <fieldset>
+                        <ol>
+
+                            <li class="form-row text-input-row">
+                                <label>Email</label>
+                                @Html.TextBoxFor(model => model.email, new { @placeholder = "Enter email..." })
+                                @Html.ValidationMessageFor(model => model.email)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>First Name</label>
+                                @Html.TextBoxFor(model => model.firstName, new { @placeholder = "Enter first name..." })
+                                @Html.ValidationMessageFor(model => model.firstName)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Last Name</label>
+                                @Html.TextBoxFor(model => model.lastName, new { @placeholder = "Enter last name..." })
+                                @Html.ValidationMessageFor(model => model.lastName)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Password</label>
+                                @Html.TextBoxFor(model => model.password, new {@type="password", @class = "password", @placeholder = "Enter password..." })
+                                @Html.ValidationMessageFor(model => model.password)
+                            </li>
+                        </ol>
+                    </fieldset>
+                    <input type="submit" value="Save" class="button maroon" />
+                    @Html.ActionLink("Back", "Index", null, new { @class = "button maroon" })
+
+                </div>
+            </div>
+            <div class="box col2 right">
+                <div class="form-container">
+                    <fieldset>
+                        <ol>
+                            <li class="form-row text-input-row">
+                                <label>Permission</label>
+                                <br />
+                                <div style="display: none;">@Html.TextBoxFor(model => model.userType, new { @class = "userType" })</div>
+                            </li>
+                            <li class="form-row text-input-row">
+                                <table>
+                                    <tr>
+                                        <td>Administrator</td>
+                                        <td>
+                                            @if(Model.userType.Substring(0,1).Equals("1")){
+                                            <input type="checkbox" class="adminCheckBox" value="true" name="adminCheckBox" id="adminCheckBox" checked/>
+                                            }
+                                            else{
+                                            <input type="checkbox" class="adminCheckBox" value="true" name="adminCheckBox" id="adminCheckBox" />
+                                            }
+                                        </td>
+                                       
+                                                    
+                                    </tr>
+                                    <tr>
+                                        <td>Events</td>
+                                        <td>
+                                            @if(Model.userType.Substring(1,1).Equals("1")){ 
+                                            <input type="checkbox" class="eventsCheckBox" value="true" name="eventsCheckBox" id="eventsCheckBox" checked/>
+                                            }
+                                            else{
+                                            <input type="checkbox" class="eventsCheckBox" value="true" name="eventsCheckBox" id="eventsCheckBox"/>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Donations</td>
+                                        <td>
+                                            @if(Model.userType.Substring(2,1).Equals("1")){ 
+                                            <input type="checkbox" class="donationsCheckBox" value="true" name="donationsCheckBox" id="donationsCheckBox" checked/>
+                                            }
+                                            else{
+                                            <input type="checkbox" class="donationsCheckBox" value="true" name="donationsCheckBox" id="donationsCheckBox" />
+                                            }
+                                            </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Participants</td>
+                                        <td>
+                                            @if(Model.userType.Substring(3,1).Equals("1")){ 
+                                            <input type="checkbox" class="participantsCheckBox" value="true" name="participantsCheckBox" id="participantsCheckBox" checked/>
+                                            }
+                                            else{
+                                            <input type="checkbox" class="participantsCheckBox" value="true" name="participantsCheckBox" id="participantsCheckBox" />
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Giving Tree</td>
+                                        <td>
+                                            @if(Model.userType.Substring(4,1).Equals("1")){ 
+                                            <input type="checkbox" class="givingTreeCheckBox" value="true" name="givingTreeCheckBox" id="givingTreeCheckBox" checked/>
+                                            }
+                                            else{
+                                            <input type="checkbox" class="givingTreeCheckBox" value="true" name="givingTreeCheckBox" id="givingTreeCheckBox" />
+                                            }
+                                        </td>
+                                    </tr>
+                                </table>
+                                <span style="display: none;" class="checkBoxValidation field-validation-error">Please check at least one permission.</span>
+                            </li>
+                        </ol>
+                    </fieldset>
+                </div>
+            </div>
+            
+  
+        }
+
+
+    </div>
+</div>

@@ -1,0 +1,75 @@
+﻿@model AFAF_Admin.Models.Users
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div id="content">
+    <h1 class="title">Create User</h1>
+    <div class="line" style="padding: 0;"></div>
+    <div class="clear"></div>
+    <div class="post">
+
+@using (Html.BeginForm(null,null,FormMethod.Post,new {@class = "forms adminUsersForm"})) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+            <div class="box col2">
+                    <div class="form-container">
+    <fieldset>
+       <ol>
+
+        <li class="form-row text-input-row">
+         <label>Email</label> 
+            @Html.TextBoxFor(model => model.email, new {@placeholder = "Enter email..." })
+            @Html.ValidationMessageFor(model => model.email)
+        </li>
+        <li class="form-row text-input-row">
+         <label>First Name</label> 
+            @Html.TextBoxFor(model => model.firstName, new {@placeholder = "Enter first name..." })
+            @Html.ValidationMessageFor(model => model.firstName)
+        </li>
+                <li class="form-row text-input-row">
+         <label>Last Name</label> 
+            @Html.TextBoxFor(model => model.lastName, new {@placeholder = "Enter last name..." })
+            @Html.ValidationMessageFor(model => model.lastName)
+        </li>
+                   <li class="form-row text-input-row">
+         <label>Password</label> 
+            @Html.TextBoxFor(model => model.password, new {@class="password",@type="password",@id="password",@placeholder = "Enter password..." })
+            @Html.ValidationMessageFor(model => model.password)
+        </li>
+         <li class="form-row text-input-row">
+         <label>Confirm Password</label> 
+            @Html.TextBox("confirmPassword", null, new {@type="password", @placeholder="Confirm password..." })
+            @Html.ValidationMessage("confirmPassword")
+        </li>
+        <p>
+            <input type="submit" value="Create" class="button maroon adminSubmitButton"/> @Html.ActionLink("Back", "Index",null, new {@class = "button maroon" })
+        </p>
+
+    </fieldset>
+</div>
+        </div>
+    <div class="box col2 right">
+        <fieldset>
+            <ol>
+                      <li class="form-row text-input-row">
+         <label>Permission</label> <br />
+        </li>
+        <li class="form-row text-input-row">
+            <table>
+                <tr><td>Administrator</td><td><input type="checkbox" class="adminCheckBox" value="true" name="adminCheckBox" id="adminCheckBox"/></td></tr>
+                <tr><td>Events</td><td><input type="checkbox" class="eventsCheckBox" value="true" name="eventsCheckBox" id="eventsCheckBox"/></td></tr>
+                <tr><td>Donations</td><td><input type="checkbox" class="donationsCheckBox" value="true" name="donationsCheckBox" id="donationsCheckBox"/></td></tr>
+                <tr><td>Participants</td><td><input type="checkbox" class="participantsCheckBox" value="true" name="participantsCheckBox" id="participantsCheckBox"/></td></tr>
+                <tr><td>Giving Tree</td><td><input type="checkbox" class="givingTreeCheckBox" value="true" name="givingTreeCheckBox" id="givingTreeCheckBox"/></td></tr>
+            </table>
+             @Html.ValidationMessage("userPermission")
+            </li>
+           </ol>
+        </fieldset>
+    </div>
+}
+
+        </div>
+    </div>

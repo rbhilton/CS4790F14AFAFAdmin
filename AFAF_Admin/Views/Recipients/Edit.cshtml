@@ -1,0 +1,71 @@
+﻿@model AFAF_Admin.Models.Recipient
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div id="content">
+    <h1 class="title">Edit Recipient</h1>
+    <div class="line" style="padding: 0;"></div>
+    <div class="clear"></div>
+    <div class="post">
+
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "forms RecipientEditForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.userName)
+            <div class="box col2">
+                <div class="form-container">
+                    <fieldset>
+                        <ol>
+                            <li class="form-row text-input-row">
+                                <label>First Name</label>
+                                @Html.TextBoxFor(model => model.firstName, new { @placeholder = "Enter recipient first name..." })
+                                @Html.ValidationMessageFor(model => model.firstName)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Last Name</label>
+                                @Html.TextBoxFor(model => model.lastName, new { @placeholder = "Enter recipient last name..." })
+                                @Html.ValidationMessageFor(model => model.lastName)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Suffix</label>
+                                @Html.TextBoxFor(model => model.suffix, new { @placeholder = "Enter recipient suffix..." })
+                                @Html.ValidationMessageFor(model => model.suffix)
+                            </li>
+
+                            <li class="form-row text-input-row"></li>
+                            <p>
+                                <input type="submit" value="Save" class="button maroon eventSubmitButton" />
+                                @Html.ActionLink("Back", "Index", null, new { @class = "button maroon" })
+                            </p>
+                        </ol>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="box col2 right">
+                <fieldset>
+                    <ol>
+                        <li class="form-row text-input-row">
+                            <label>Recipient Image URL</label>
+                            @Html.TextBoxFor(model => model.imageURL, new { @placeholder = "Enter recipient image URL..." })
+                            @Html.ValidationMessageFor(model => model.imageURL)
+                        </li>
+                        <li class="form-row text-input-row">
+                            <label>Recipient Status</label><br />
+                            @Html.DropDownListFor(model => Model.active, new List<SelectListItem>{
+                                 new SelectListItem{Text = "Select Recipient status...", Value = ""},
+                                 new SelectListItem{Text = "Active", Value = "true"},
+                                 new SelectListItem{Text = "Inactive", Value = "false"},
+                                }, new { @class = "createEventSelect" })<br />
+                            @Html.ValidationMessageFor(model => model.active)
+
+                        </li>
+                    </ol>
+                </fieldset>
+            </div>
+        }
+
+    </div>
+</div>

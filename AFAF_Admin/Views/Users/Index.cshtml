@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AFAF_Admin.Models.Users>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div id="content">
+    <h1 class="title">Administrator Manager</h1>
+    <div class="line" style="padding: 0;"></div>
+    <div class="post">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "button maroon" })
+        <table id="userTable" class="tablesorter">
+            <thead>
+                <tr>
+                    <th>Email
+                    </th>
+                    <th>First Name
+                    </th>
+                    <th>Last Name
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.firstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lastName)
+                    </td>
+                    <td style="text-align: center;">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "button maroon", @style = "margin: 0;" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "deleteLink button maroon", @style = "margin: 0;" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+

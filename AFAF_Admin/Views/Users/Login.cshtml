@@ -1,0 +1,48 @@
+﻿@model AFAF_Admin.Models.Users
+
+<!-- Begin Content -->
+
+<div id="content">
+    <h1 class="title">Administrator Manager Login</h1>
+    <div class="line" style="padding: 0;"></div>
+    <div class="post">
+            <div class="box col2" >
+
+                <img class="logoBigImage" src="~/Images/afaf-main1.png" />
+
+            </div>
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "forms" }))
+            {               
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                
+                <div class="box col2">
+                    <div class="form-container">
+                        <fieldset>
+                            
+                            <ol>
+                                <li style="padding-bottom: 10px;">@Html.ValidationMessage("incorrectLogin")</li>
+                                <li class="form-row text-input-row">
+                                    
+                                    <label>Username</label>
+                                    @Html.TextBoxFor(model => model.email, new { @placeholder = "Enter email..." })
+                                    @Html.ValidationMessageFor(model => model.email)
+                                </li>
+                                <li class="form-row text-input-row">
+                                    <label>Password</label>
+                                    @Html.TextBoxFor(model => model.password, new { @type = "password", @placeholder = "Enter password..." })
+                                    @Html.ValidationMessageFor(model => model.password)
+                                </li>
+                                <li>
+                                    <input type="submit" class="button maroon" value="Log In" />
+                                    
+                                </li>
+                            </ol>
+                        </fieldset>
+                    
+                    </div>
+                </div>
+           }
+    </div>
+</div>
+	<!-- End Content -->

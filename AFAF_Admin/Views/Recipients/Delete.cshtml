@@ -1,0 +1,54 @@
+﻿@model AFAF_Admin.Models.Recipient
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Recipient</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.firstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.firstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.suffix)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.suffix)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.imageURL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.imageURL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.active)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.active)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

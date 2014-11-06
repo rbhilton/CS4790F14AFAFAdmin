@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AFAF_Admin.Models.Event>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="content">
+    <h1 class="title">Events Manager</h1>
+    <div class="line" style="padding: 0;"></div>
+    <div class="post">
+    @Html.ActionLink("Create New", "Create",null, new {@class = "button maroon" })
+<table class="tablesorter" id="eventTable" style="text-transform: capitalize;">
+    <thead>
+    <tr>
+        <th>
+            Event Status
+        </th>
+        <th>
+            Event Title
+        </th>
+        <th>
+            Event Type
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @if (item.eventStatus == false) { 
+                <span>Inactive</span>
+            }
+            else{
+                <span>Active</span>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eventTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eventType)
+        </td>
+        <td style="text-align: center;">
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID },new {@class = "button maroon", @style="margin: 0;" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID },new {@class = "deleteLink button maroon",@style="margin: 0;" })
+        </td>
+    </tr>
+}
+
+</table>
+        </div>
+    </div>

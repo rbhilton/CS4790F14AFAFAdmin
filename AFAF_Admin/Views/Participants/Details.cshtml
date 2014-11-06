@@ -1,0 +1,64 @@
+﻿@model AFAF_Admin.Models.Participant
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Participant</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.firstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.firstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.suffix)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.suffix)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.phone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.emContactName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.emContactName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.emContactPhone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.emContactPhone)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.participantID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

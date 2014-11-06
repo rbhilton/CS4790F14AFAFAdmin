@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Administrator Manager</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/js/css/jui/jquery-ui.css")
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/style.css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Html.AntiForgeryToken()
+    </head>
+    <body>
+        <!-- Begin Wrapper -->
+        <div id="wrapper">
+            <!-- Begin Sidebar -->
+            <div id="sidebar">
+                <div id="logo">
+                    <img class="logoBarImage" src="~/Images/afaf-main2.png" /></div>
+
+                <!-- Begin Menu -->
+                <div id="menu" class="menu-v">
+                    <ul>
+                        <li></li>
+                        <li>@Html.ActionLink("Administrator", "../Users")</li>
+                        <li>@Html.ActionLink("Events", "../Events")</li>
+                        <li>@Html.ActionLink("Recipients", "../Recipients")</li>
+                        <li>@Html.ActionLink("Donors", "../Participants")</li>
+                        <li>@Html.ActionLink("GivingTree", "../Home")</li>
+                        <li><a href="#">Help</a></li>
+                        @if (Session["user"] == null)
+                        {
+                            <li>@Html.ActionLink("Log In", "../Users/Login")</li>
+                        }
+                        else{
+                            <li style="text-transform:capitalize;">@Html.ActionLink(@Session["user"]+" |Log Out|", "../Users/LogOff")</li>
+                        }
+                        
+                    </ul>
+                </div>
+                <!-- End Menu -->
+
+
+                <div class="sidebox">
+                </div>
+
+
+            </div>
+            <!-- End Sidebar -->
+            <div id="body">
+                @RenderSection("featured", required: false)
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+            </div>
+        </div>
+        <!--Delete Dialog-->
+        <div id="dialog-confirm" title="Delete Entry?" style="display: none;">
+            <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>This entry will be permanently deleted and cannot be recovered. Are you sure?</p>
+        </div>
+        <!-- End Wrapper -->
+        <div class="clear"></div>
+
+        <footer></footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/Content/js/ddsmoothmenu.js")
+        @Scripts.Render("~/Content/js/jquery.slickforms.js")
+        @Scripts.Render("~/Content/js/jquery-ui.js")
+        @Scripts.Render("~/Content/js/jquery.masonry.min.js")
+        @Scripts.Render("~/bundles/jqueryTableSorter")
+        @Scripts.Render("~/Content/js/scripts.js")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

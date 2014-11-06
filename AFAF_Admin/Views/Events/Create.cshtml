@@ -1,0 +1,161 @@
+﻿@model AFAF_Admin.Models.Event
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div id="content">
+    <h1 class="title">Create Event</h1>
+    <div class="line" style="padding: 0;"></div>
+    <div class="clear"></div>
+    <div class="post">
+
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "forms eventsCreateForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="box col2">
+                <div class="form-container">
+                    <fieldset>
+                        <ol>
+
+                            <li class="form-row text-input-row">
+                                <label>Event Type</label>
+                                @Html.DropDownListFor(model => Model.eventType, new List<SelectListItem>{
+                                 new SelectListItem{Text = "Select event Type...", Value = ""},
+                                 new SelectListItem{Text = "Run", Value = "run"},
+                                 new SelectListItem{Text = "Dinner", Value = "dinner"},
+                                 new SelectListItem{Text = "Golf", Value = "golf"},
+                                }, new {@class="createEventSelect" })<br />
+                                @Html.ValidationMessageFor(model => model.eventType)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Event Status</label><br />
+                                 @Html.DropDownListFor(model => Model.eventStatus, new List<SelectListItem>{
+                                 new SelectListItem{Text = "Select event status...", Value = ""},
+                                 new SelectListItem{Text = "Active", Value = "true"},
+                                 new SelectListItem{Text = "Inactive", Value = "false"},
+                                }, new {@class="createEventSelect" })<br />
+                                @Html.ValidationMessageFor(model => model.eventStatus)
+                            
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Event Title</label>
+                                @Html.TextBoxFor(model => model.eventTitle, new { @placeholder = "Enter event title..." })
+                                @Html.ValidationMessageFor(model => model.eventTitle)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Event Date (Format: mm/dd/yyyy)</label>
+                               <input data-val="true" class="datePicker" data-val-date="The field eventDate must be a date." 
+                                    data-val-required="The event date field is required." id="eventDate" 
+                                    name="eventDate" type="date" value="">
+                                @Html.ValidationMessageFor(model => model.eventDate)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Event Time (Format: 10:00 am/pm | 1:00 am/pm)</label>
+                                @Html.TextBoxFor(model => model.eventTime, new { @placeholder = "Enter event time..." })
+                                @Html.ValidationMessageFor(model => model.eventTime)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Event Registration Close Date <br />(Format: mm/dd/yyyy)</label>
+                                <input data-val="true" class="datePicker" data-val-date="The field eventRegCloseDate must be a date." 
+                                    data-val-required="The event registration close date field is required." id="eventRegCloseDate" 
+                                    name="eventRegCloseDate" type="date" value="">
+                                @Html.ValidationMessageFor(model => model.eventRegCloseDate)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Event Location</label>
+                                @Html.TextBoxFor(model => model.eventLocationName, new { @placeholder = "Enter event location..." })
+                                @Html.ValidationMessageFor(model => model.eventLocationName)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Event Address</label>
+                                @Html.TextBoxFor(model => model.eventAddress, new { @placeholder = "Enter event address..." })
+                                @Html.ValidationMessageFor(model => model.eventAddress)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Event City</label>
+                                @Html.TextBoxFor(model => model.eventCity, new { @placeholder = "Enter event city..." })
+                                @Html.ValidationMessageFor(model => model.eventCity)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Event State</label>
+                                @Html.TextBoxFor(model => model.eventState, new { @placeholder = "Enter event state..." })
+                                @Html.ValidationMessageFor(model => model.eventState)
+                            </li>
+                            <li class="form-row text-input-row">
+                                <label>Event Zip Code</label>
+                                @Html.TextBoxFor(model => model.eventZip, new { @placeholder = "Enter event zip code..." })
+                                @Html.ValidationMessageFor(model => model.eventZip)
+                            </li>
+
+                            <p>
+                                <input type="submit" value="Create" class="button maroon eventSubmitButton" />
+                                @Html.ActionLink("Back", "Index", null, new { @class = "button maroon" })
+                                <input type="button" value="Fake Data" class="button maroon eventFillData" />
+                                <input type="submit" value="Submit" class="createEvent" style="display: none;" />
+                            </p>
+                        </ol>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="box col2 right">
+                <fieldset>
+                    <ol>
+                        <li class="form-row text-input-row">
+                            <label>Event User Name</label>
+                            @Html.TextBoxFor(model => model.userName, new { @placeholder = "Enter event username..." })
+                            @Html.ValidationMessageFor(model => model.userName)
+                        </li>
+                        <li class="form-row text-input-row">
+                            <label>Event Auction Lead Name</label>
+                            @Html.TextBoxFor(model => model.auctionLeadName, new { @placeholder = "Enter Event Aution Lead Name..." })
+                            @Html.ValidationMessageFor(model => model.auctionLeadName)
+                        </li>
+                        <li class="form-row text-input-row">
+                            <label>Event Price1</label>
+                            @Html.TextBoxFor(model => model.price1, new { @placeholder = "Enter event price1..." })
+                            @Html.ValidationMessageFor(model => model.price1)
+                        </li>
+                        <li class="form-row text-input-row">
+                            <label>Event Price2</label>
+                            @Html.TextBoxFor(model => model.price2, new { @placeholder = "Enter event price2..." })
+                            @Html.ValidationMessageFor(model => model.price2)
+                        </li>
+                        <li class="form-row text-input-row">
+                            <label>Event Director</label>
+                            @Html.TextBoxFor(model => model.eventDirector, new { @placeholder = "Enter event director..." })
+                            @Html.ValidationMessageFor(model => model.eventDirector)
+                        </li>
+                        <li class="form-row text-input-row">
+                            <label>Event Director Email</label>
+                            @Html.TextBoxFor(model => model.eventDirectorEmail, new { @placeholder = "Enter event director email..." })
+                            @Html.ValidationMessageFor(model => model.eventDirectorEmail)
+                        </li>
+                        <li class="form-row text-input-row">
+                            <label>Event Director Phone Number <br />(Format: '1234567890' 10 digits)</label>
+                            @Html.TextBoxFor(model => model.eventDirectorPhone, new { @class = "directorPhone", @placeholder = "Enter event director phone number..." })
+                            @Html.ValidationMessageFor(model => model.eventDirectorPhone)
+                        </li>
+                        <li class="form-row text-input-row">
+                            <label>Event Maximum Capacity</label>
+                            @Html.TextBoxFor(model => model.eventMaxCapacity, new { @placeholder = "Enter event maximum capacity..." })
+                            @Html.ValidationMessageFor(model => model.eventMaxCapacity)
+                        </li>
+                        <li class="form-row text-input-row">
+                            <label>Event Description</label>
+                            @Html.TextAreaFor(model => model.eventDescription, new { @class = "text-area", @placeholder = "Enter event description..." })
+                            @Html.ValidationMessageFor(model => model.eventDescription)
+                        </li>
+                        <li class="form-row text-input-row">
+                            <label>Event Details</label>
+                            @Html.TextAreaFor(model => model.eventDetails, new { @class = "text-area", @placeholder = "Enter event details..." })
+                            @Html.ValidationMessageFor(model => model.eventDetails)
+                        </li>
+                    </ol>
+                </fieldset>
+            </div>
+        }
+
+    </div>
+</div>

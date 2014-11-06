@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AFAF_Admin.Models.ErrorLog>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/Content/ErrorLog.css")
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#accordion").accordion( {collapsible : true} );
+        });
+    </script>
+</head>
+<body>
+    <div class="main">
+        <div id="accordion">
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                <div class="accordion"> @item.timeStamp | @item.errorCode | @item.errorText</div>
+                <div class="container">
+                    <div class="content">
+                        @*<div>Sample Content</div>*@
+                        <p>Error Info</p>
+                        <ul>
+                            <li>@item.timeStamp</li>
+                            <li>@item.fileName</li>
+                            <li>@item.functionName</li>
+                            <li>@item.lineNumber</li>
+                            <li>@item.errorText</li>
+                            <li>@item.errorCode</li>
+                            <li>@item.extraData</li>
+                        </ul>
+                    </div>
+                </div>
+                }
+            }
+        </div>
+        <form method="post" action="/ErrorLog/Index">
+            @Html.Label("Enter a number")
+            @Html.Editor("testInt")
+            <input type="submit" />
+        </form>
+    </div>
+</body>
+</html>

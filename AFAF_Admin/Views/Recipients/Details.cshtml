@@ -1,0 +1,50 @@
+﻿@model AFAF_Admin.Models.Recipient
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Recipient</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.firstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.firstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.suffix)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.suffix)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.imageURL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.imageURL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.active)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.active)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.userName }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

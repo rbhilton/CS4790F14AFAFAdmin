@@ -1,0 +1,155 @@
+﻿@model AFAF_Admin.Models.Event
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Event</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventStatus)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventStatus)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventTitle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventTitle)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventRegCloseDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventRegCloseDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventLocationName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventLocationName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventCity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventCity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventState)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventState)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventZip)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventZip)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.userName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.userName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.price1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.price1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.price2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.price2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventDirector)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventDirector)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventDirectorEmail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventDirectorEmail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventDirectorPhone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventDirectorPhone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventMaxCapacity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventMaxCapacity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventDetails)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventDetails)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
